@@ -1053,7 +1053,7 @@ Services Style
 }
 
 .first-service:hover .icon {
-  background-image: url(../images/service-icon-hover-01.png);
+  background-image: url(../images/service-icon-hover-01.png); 
 }
 
 .second-service .icon {
