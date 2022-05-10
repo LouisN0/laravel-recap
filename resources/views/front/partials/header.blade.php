@@ -16,10 +16,18 @@
                           <li class="scroll-to-section"><a href="#about">About</a></li>
                           <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
                           <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
-                          <li>
-                              <div class="gradient-button"><a id="modal_trigger" href="#modal"><i
-                                          class="fa fa-sign-in-alt"></i> Sign In Now</a></div>
-                          </li>
+                          @if (Route::has('login'))
+                              @auth
+                                  <div class="gradient-button"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                              @else
+                                  <li>
+                                      <div class="gradient-button"><a id="modal_trigger" href="#modal"><i
+                                                  class="fa fa-sign-in-alt"></i> Sign In Now</a></div>
+                                  </li>
+                              @endauth
+                          @endif
+
+
                       </ul>
                       <a class='menu-trigger'>
                           <span>Menu</span>
@@ -68,49 +76,27 @@
           <div class="user_login">
               <form method="POST" action="{{ route('login') }}">
                   @csrf
-                  <label for="email">{{ __('Email') }}</label>
-                  <input class="@error('email') is-invalid @enderror" type="email" id="email" placeholder="Email Address" name="email" value="{{ old('email') }}"
-                      autocimplete="email" />
+                  <label>Email / Username</label>
+                  <input type="text" name="email" />
                   <br />
-                  @error('email')
-                      <span class="invalid-feedback d-block mt-2 text-danger rounded" role="alert">
-                          <span><i class="fas fa-exclamation-triangle"></i></span>
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
 
-                  <label for="password">{{ __('Password') }}</label>
-                  <input type="password" id="password"
-                  class=" @error('password') is-invalid @enderror"
-                  placeholder="Password *" name="password"
-                  autocomplete="new-password" />
+                  <label>Password</label>
+                  <input type="password" name="password" />
                   <br />
-                  @error('password')
-                  <span class="invalid-feedback d-block mt-2 text-danger rounded"
-                      role="alert">
-                      <span><i class="fas fa-exclamation-triangle"></i></span>
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-              <label for="remember" class="inline-flex items-center">
-                <input id="remember" type="checkbox"
-                    class=""
-                    name="remember">
-                <span
-                    class="ml-2 text-sm text-dark">{{ __('Remember me') }}</span>
-            </label>
+
+                  <div class="checkbox">
+                      <input id="remember" type="checkbox" />
+                      <label for="remember">Remember me on this computer</label>
+                  </div>
 
                   <div class="action_btns">
                       <div class="one_half"><a href="#" class="btn back_btn"><i
                                   class="fa fa-angle-double-left"></i> Back</a></div>
-                      <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+                      <div class="one_half last"><button type="submit">login</button></div>
                   </div>
               </form>
 
-              <p class="small mx-auto pb-lg-2"><a
-                href="{{ url('forgot-password') }}"
-                class="text-gray-600">{{ __('Forgot your password?') }}</a>
-        </p>
+              <a href="#" class="forgot_password">Forgot password?</a>
           </div>
 
           <!-- Register Form -->
