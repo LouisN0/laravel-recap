@@ -10,3 +10,78 @@
     padding:3.5rem;
     height:85vh;
 }
+.service-item {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+    transition: all .3s;
+  }
+  
+  .service-item .icon {
+    margin-left: 0px;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    transition: all .3s;
+  }
+  
+  .service-item h4 {
+    transition: all .3s;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  .service-item p {
+    transition: all .3s;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .service-item:hover h4,
+  .service-item:hover p,
+  .service-item:hover .text-button a {
+    color: #fff;
+  }
+  
+  .first-service .icon {
+    background-image: url(../images/service-icon-01.png);
+  }
+  
+  .first-service:hover .icon {
+    background-image: url(../images/service-icon-hover-01.png); 
+  }
+  
+  .second-service .icon {
+    background-image: url(../images/service-icon-02.png);
+  }
+  
+  .second-service:hover .icon {
+    background-image: url(../images/service-icon-hover-02.png);
+  }
+  
+  
+  .third-service .icon {
+    background-image: url(../images/service-icon-03.png);
+  }
+  
+  .third-service:hover .icon {
+    background-image: url(../images/service-icon-hover-03.png);
+  }
+  
+  .fourth-service .icon {
+    background-image: url(../images/service-icon-04.png);
+  }
+  
+  .fourth-service:hover .icon {
+    background-image: url(../images/service-icon-hover-04.png);
+  }
+  
+  .service-item:hover {
+    background-image: url(../images/service-bg.jpg);
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

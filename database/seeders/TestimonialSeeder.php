@@ -23,7 +23,7 @@ class TestimonialSeeder extends Seeder
             'commentaire' => 'Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
             lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.',
             'taff'=> 'CEO of David Company',
-            'image' => 'quote.png',
+            'image' => 'client-image.jpg',
         ]);
         DB::table('testimonials')->insert([
             'nom' => 'Jake Harris Nyo',
@@ -32,7 +32,7 @@ class TestimonialSeeder extends Seeder
             'rating' => '4.5',
             'commentaire' => 'You are not allowed to redistribute this template ZIP file on any other website.',
             'taff'=> 'CTO of Digital Company',
-            'image' => 'quote.png',
+            'image' => 'client-image.jpg',
         ]);
         DB::table('testimonials')->insert([
             'nom' => 'May Catherina',
@@ -41,7 +41,7 @@ class TestimonialSeeder extends Seeder
             'rating' => '4.7',
             'commentaire' => 'You are not allowed to redistribute this template ZIP file on any other website.',
             'taff'=> 'Founder of Catherina Co.',
-            'image' => 'quote.png',
+            'image' => 'client-image.jpg',
         ]);
         DB::table('testimonials')->insert([
             'nom' => 'Random User',
@@ -50,7 +50,7 @@ class TestimonialSeeder extends Seeder
             'rating' => '3.9',
             'commentaire' => 'You are not allowed to redistribute this template ZIP file on any other website.',
             'taff'=> 'Random Staff',
-            'image' => 'quote.png',
+            'image' => 'client-image.jpg',
         ]);
         DB::table('testimonials')->insert([
             'nom' => 'Mark Amber Do',
@@ -59,7 +59,7 @@ class TestimonialSeeder extends Seeder
             'rating' => '4.3',
             'commentaire' => 'You are not allowed to redistribute this template ZIP file on any other website.',
             'taff'=> 'CTO, Amber Do Company',
-            'image' => 'quote.png',
+            'image' => 'client-image.jpg',
         ]);
     }
 }

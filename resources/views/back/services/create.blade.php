@@ -22,44 +22,48 @@
                                 @csrf
                                 <div class='row'>
                                     <div class='col-md-6 col-12'>
-                                        {{-- <div class='form-group'>
+                                        <div class='form-group'>
                                             <label for='first-icone-column'>Icones</label>
                                             <div class='d-flex'>
                                                 <div class="form-check me-2">
                                                     <input class="form-check-input" type="radio" name="icone"
-                                                        id="flexRadioDefault1" value="service-icon-01.png">
+                                                        id="flexRadioDefault1" value="first">
                                                     <label class="form-check-label" for="flexRadioDefault1">
-                                                        <img src="{{ "/images/" . $services[0]->icone }}" style="width: 50px"
-                                                            alt="">
+                                                        <div class="service-item {{ $services[0]->icone }}-service">
+                                                            <div class="icon"></div>
+                                                        </div>
                                                     </label>
                                                 </div>
                                                 <div class="form-check ms-2">
                                                     <input class="form-check-input" type="radio" name="icone"
-                                                        id="flexRadioDefault2" value="service-icon-02.png">
+                                                        id="flexRadioDefault2" value="second">
                                                     <label class="form-check-label" for="flexRadioDefault2">
-                                                        <img src="{{ "/images/" . $services[1]->icone }}" style="width: 50px"
-                                                            alt="">
+                                                        <div class="service-item {{ $services[1]->icone }}-service">
+                                                            <div class="icon"></div>
+                                                        </div>
                                                     </label>
                                                 </div>
                                                 <div class="form-check ms-2">
                                                     <input class="form-check-input" type="radio" name="icone"
-                                                        id="flexRadioDefault3" value="service-icon-03.png">
+                                                        id="flexRadioDefault3" value="third">
                                                     <label class="form-check-label" for="flexRadioDefault3">
-                                                        <img src="{{ "/images/" . $services[2]->icone }}" style="width: 50px"
-                                                            alt="">
+                                                        <div class="service-item {{ $services[2]->icone }}-service">
+                                                            <div class="icon"></div>
+                                                        </div>
                                                     </label>
                                                 </div>
                                                 <div class="form-check ms-2">
                                                     <input class="form-check-input" type="radio" name="icone"
-                                                        id="flexRadioDefault4" value="service-icon-04.png">
+                                                        id="flexRadioDefault4" value="fourth">
                                                     <label class="form-check-label" for="flexRadioDefault4">
-                                                        <img src="{{ "/images/" . $services[3]->icone }}" style="width: 50px"
-                                                            alt="">
+                                                        <div class="service-item {{ $services[3]->icone }}-service">
+                                                            <div class="icon"></div>
+                                                        </div>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class='col-md-6 col-12'>
                                         <div class='form-group'>
                                             <label for='first-titre-column'>titre</label>

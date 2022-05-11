@@ -80,7 +80,7 @@ class TestimonialController extends Controller
     {
         $testimonial = Testimonial::find($id);
 
-        $this->authorize('delete', $testimonial);
+        // $this->authorize('delete', $testimonial);
 
         $testimonial->delete();
         return redirect()->back()->with("message", "Successful delete !");

@@ -23,14 +23,14 @@ class ServiceController extends Controller
         
         $service = new Service;
         $request->validate([
+            'icone'=> 'required',
             'titre'=> 'required',
             'description'=> 'required',
-            'icone'=> 'required',
             'lien'=> 'required',
         ]); // store_validated_anchor;
+        $service->icone = $request->icone;
         $service->titre = $request->titre;
         $service->description = $request->description;
-        $service->icone = $request->icone;
         $service->lien = $request->lien;
         $service->save(); // store_anchor
         return redirect()->route("service.index")->with("message", "Successful storage !");
@@ -53,15 +53,16 @@ class ServiceController extends Controller
         // $this->authorize('update', $service);
 
         $request->validate([
+            'icone'=> 'required',
             'titre'=> 'required',
             'description'=> 'required',
-            'icone'=> 'required',
             'lien'=> 'required',
         ]); // update_validated_anchor;
+        $service->icone = $request->icone;
         $service->titre = $request->titre;
         $service->description = $request->description;
-        $service->icone = $request->icone;
         $service->lien = $request->lien;
+        
         $service->save(); // update_anchor
         return redirect()->route("service.index")->with("message", "Successful update !");
     }

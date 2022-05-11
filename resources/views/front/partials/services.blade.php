@@ -17,7 +17,7 @@
         <div class="row">
             @foreach ($services as $service )
                <div class="col-lg-3">
-                <div class="service-item first-service">
+                <div class="service-item {{ $service->icone }}-service">
                     <div class="icon"></div>
                     <h4>{{ $service->titre }}</h4>
                     <p>{{ $service->description }}</p>
