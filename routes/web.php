@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +35,11 @@ Route::get('/back/users/{id}/show', [UserController::class, 'show'])->name('user
 Route::get('/back/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/back/users/{id}/update', [UserController::class, 'update'])->name('user.update');
 Route::post('/back/users/{id}/delete', [UserController::class, 'destroy'])->name('user.destroy');
+
+Route::get('/back/banners', [BannerController::class, 'index'])->name('banner.index');
+Route::get('/back/banners/{id}/edit', [BannerController::class, 'edit'])->name('banner.edit');
+Route::post('/back/banners/{id}/update', [BannerController::class, 'update'])->name('banner.update');
+
+Route::resource('/back/service', ServiceController::class);
+
+Route::resource('/back/testimonial', TestimonialController::class);

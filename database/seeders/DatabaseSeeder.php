@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             BannerSeeder::class,
             ServiceSeeder::class,
             UserSeeder::class,
+            TestimonialSeeder::class,
         ]);
     }
 }
