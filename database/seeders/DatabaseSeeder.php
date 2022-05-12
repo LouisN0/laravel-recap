@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             UserSeeder::class,
             TestimonialSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

@@ -17,7 +17,7 @@
         <div id="main">
             <div class="page-heading mb-5">
             </div>
-            <div class="page-content  cont">
+            <div class="page-content  cont" style="height:max-content !important">
                 @yield("content")
         
                     

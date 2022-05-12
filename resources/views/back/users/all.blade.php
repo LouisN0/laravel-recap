@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th scope='col'>#</th>
-                    
+                    <th scope='col'>role</th>
                     <th scope='col'>name</th>
                     <th scope='col'>email</th>
                     <th scope='col'>password</th>
@@ -32,6 +32,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <th scope='row'>{{ $user->id }}</th>
+                        <td>{{ $user->role->role }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->password }}</td>
