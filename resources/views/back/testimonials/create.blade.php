@@ -18,7 +18,7 @@
                 <div class='card'>
                     <div class='card-content'>
                         <div class='card-body'>
-                            <form class='form' action='{{ route('testimonial.store') }}' method='post'>
+                            <form class='form' action='{{ route('testimonial.store') }}' method='post' enctype='multipart/form-data'>
                                 @csrf
                                 <div class='row'>
 									<div class='col-md-6 col-12'>
@@ -59,8 +59,8 @@
                                     </div>
                                     <div class='col-md-6 col-12'>
                                         <div class='form-group'>
-                                            <label for='first-image-column'>image</label>
-                                            <input type='text' id='first-image-column' class='form-control' name='image'>
+                                            <label for="formFile" class="form-label">Image</label>
+	                                        <input class="form-control" name='image' type="file" id="formFile">
                                         </div>
                                     </div>
                                     <div class='col-12 d-flex justify-content-end'> {{-- create_blade_anchor --}}

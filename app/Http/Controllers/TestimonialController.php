@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TestimonialController extends Controller
 {
@@ -28,7 +29,6 @@ class TestimonialController extends Controller
             'taff'=> 'required',
             'rating'=> 'required',
             'commentaire'=> 'required',
-            'image'=> 'required',
         ]); // store_validated_anchor;
         $testimonial->nom = $request->nom;
         $testimonial->date = $request->date;
@@ -36,7 +36,7 @@ class TestimonialController extends Controller
         $testimonial->taff = $request->taff;
         $testimonial->rating = $request->rating;
         $testimonial->commentaire = $request->commentaire;
-        $testimonial->image = $request->image;
+        $testimonial->image = $request->file("image")->storePublicly('images',"public");
         
         $testimonial->save(); // store_anchor
         return redirect()->route("testimonial.index")->with("message", "Successful storage !");
@@ -64,7 +64,7 @@ class TestimonialController extends Controller
             'taff'=> 'required',
             'rating'=> 'required',
             'commentaire'=> 'required',
-            'image'=> 'required',   
+              
         ]); // update_validated_anchor;
         $testimonial->nom = $request->nom;
         $testimonial->date = $request->date;
@@ -72,7 +72,7 @@ class TestimonialController extends Controller
         $testimonial->taff = $request->taff;
         $testimonial->rating = $request->rating;
         $testimonial->commentaire = $request->commentaire;
-        $testimonial->image = $request->image;
+        $testimonial->image = $request->file("image")->storePublicly('images',"public");
         $testimonial->save(); // update_anchor
         return redirect()->route("testimonial.index")->with("message", "Successful update !");
     }
@@ -81,6 +81,11 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::find($id);
 
         // $this->authorize('delete', $testimonial);
+        $destination = "images/" . $testimonial->image;
+        if(File::exists($destination)){
+            File::delete($destination);
+        }
+        
 
         $testimonial->delete();
         return redirect()->back()->with("message", "Successful delete !");

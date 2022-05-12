@@ -34,7 +34,7 @@ class ServiceSeeder extends Seeder
             'lien' => '#',
          ]);
          DB::table('services')->insert([
-            'titre' => '24/7 Help &amp; Support',
+            'titre' => '24/7 Help & Support',
             'description' => 'Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion
             axe.',
             'icone' => 'fourth',
