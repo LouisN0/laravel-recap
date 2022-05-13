@@ -40,16 +40,17 @@
                         <td>{{ $service->lien }}</td>
                         <td> {{-- all_td_anchor --}}
                             <div class='d-flex'>
-                                {{-- @can('delete', $service) --}}
+                                @can('delete', $service)
                                     <form action='{{ route('service.destroy', $service->id) }}' method='post'>
                                         @csrf
                                         @method('delete')
-                                        <button class='btn btn-danger mx-1' type=submit>Delete</button>
+                                        <input type='hidden' name='id' value='{{ encrypt($service->id) }}'>
+                                        <button class='btn btn-danger mx-1' type="submit">Delete</button>
                                     </form>     
-                                {{-- @endcan --}}
-                                {{-- @can('update', $service) --}}
+                                @endcan
+                                @can('update', $service)
                                     <a class='btn btn-primary mx-1' href='{{ route('service.edit', $service->id) }}' role='button'>Edit</a>  
-                                {{-- @endcan --}}
+                                @endcan
                                 <a class='btn btn-primary mx-1' href='{{ route('service.show', $service->id) }}' role='button'>Read</a>
                             </div>
                         </td>

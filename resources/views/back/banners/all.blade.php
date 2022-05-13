@@ -43,6 +43,7 @@
                         <td>{{ $banner->img }}</td>
                         <td> {{-- all_td_anchor --}}
                             <div class='d-flex'>
+                                @can('update', $banner)
 								<a class='btn btn-primary mx-1' href='{{ route('banner.edit', $banner->id) }}' role='button'>Edit</a>
                             </div> {{-- all_button_anchor --}} 
                         </td>

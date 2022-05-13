@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view("/back/users/all",compact("users"));
+        if (Auth::check()) {
+            $users = User::all();
+            return view("/back/users/all",compact("users"));
+        }else{
+            return redirect()->back();
+        }
     }
     public function create()
     {
@@ -58,11 +63,15 @@ class UserController extends Controller
         $user->save(); // update_anchor
         return redirect()->route("user.index")->with("message", "Successful update !");
     }
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        if (decrypt($request->id) == $id) {
         $user = User::find($id);
         $user->delete();
         return redirect()->back()->with("message", "Successful delete !");
+        }else{
+            return redirect()->back()->with("message", "error delete");
+        }
     }
     // public function mail($id){
     //     $user = User::find($id);

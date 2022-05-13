@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestimonialController;
@@ -43,3 +44,5 @@ Route::post('/back/banners/{id}/update', [BannerController::class, 'update'])->n
 Route::resource('/back/service', ServiceController::class);
 
 Route::resource('/back/testimonial', TestimonialController::class);
+
+Route::post('/contact-form', [MailController::class, 'storeContactForm'])->name('contact-form.store');

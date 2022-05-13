@@ -53,16 +53,17 @@
                         </td> --}}
                         <td> {{-- all_td_anchor --}}
                             <div class='d-flex'>
-                                {{-- @can('delete', $testimonial) --}}
+                                @can('delete', $testimonial)
                                     <form action='{{ route('testimonial.destroy', $testimonial->id) }}' method='post'>
                                         @csrf
                                         @method('delete')
+                                        <input type='hidden' name='id' value='{{ encrypte($testimonial->id) }}'>
                                         <button class='btn btn-danger mx-1' type=submit>Delete</button>
                                     </form>      
-                                {{-- @endcan --}}
-                                {{-- @can('update', $testimonial) --}}
+                                @endcan
+                                @can('update', $testimonial)
                                     <a class='btn btn-primary mx-1' href='{{ route('testimonial.edit', $testimonial->id) }}' role='button'>Edit</a>     
-                                {{-- @endcan --}}
+                                @endcan
                                 <a class='btn btn-primary mx-1' href='{{ route('testimonial.show', $testimonial->id) }}' role='button'>Read</a>
                                 {{-- @if (Auth::user()->role_id == 1)
                                     @if ($testimonial->status == 0)

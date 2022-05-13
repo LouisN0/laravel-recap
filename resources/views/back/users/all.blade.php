@@ -40,6 +40,8 @@
                             <div class='d-flex'>
                                 <form action='{{ route('user.destroy', $user->id) }}' method='post'>
                                     @csrf
+                                    @method('delete')
+                                    <input type='hidden' name='id' value='{{ encrypte($user->id) }}'>
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                                 <a class='btn btn-primary' href='{{ route('user.edit', $user->id) }}' user='button'>Edit</a>

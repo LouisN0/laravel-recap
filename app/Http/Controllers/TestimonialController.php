@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -15,11 +16,14 @@ class TestimonialController extends Controller
     }
     public function create()
     {
+        if (! Gate::allows('create-testimonial')) {
+            abort(403, 'Sorry, not allowed');
+        }
         return view("/back/testimonials/create");
     }
     public function store(Request $request)
     {
-        // $this->authorize('create', Testimonial::class);
+        $this->authorize('create', Testimonial::class);
         
         $testimonial = new Testimonial;
         $request->validate([
@@ -48,6 +52,9 @@ class TestimonialController extends Controller
     }
     public function edit($id)
     {
+        if(! Gate::allows('edit-testimonial')){
+            abort(403, 'Sorry, not allowed');
+        }
         $testimonial = Testimonial::find($id);
         return view("/back/testimonials/edit",compact("testimonial"));
     }
@@ -55,7 +62,7 @@ class TestimonialController extends Controller
     {
         $testimonial = Testimonial::find($id);
 
-        // $this->authorize('update', $testimonial);
+        $this->authorize('update', $testimonial);
 
         $request->validate([
             'nom'=> 'required',
@@ -76,19 +83,20 @@ class TestimonialController extends Controller
         $testimonial->save(); // update_anchor
         return redirect()->route("testimonial.index")->with("message", "Successful update !");
     }
-    public function destroy($id)
-    {
-        $testimonial = Testimonial::find($id);
-
-        // $this->authorize('delete', $testimonial);
-        $destination = "images/" . $testimonial->image;
-        if(File::exists($destination)){
-            File::delete($destination);
+    public function destroy($id, Request $request)
+    {   
+        if (decrypt($request->id) == $id) { 
+            $testimonial = Testimonial::find($id);
+            $this->authorize('delete', $testimonial);
+            $destination = "images/" . $testimonial->image;
+            if(File::exists($destination)){
+                File::delete($destination);
         }
-        
-
-        $testimonial->delete();
-        return redirect()->back()->with("message", "Successful delete !");
+            $testimonial->delete();
+            return redirect()->back()->with("message", "Successful delete !");
+        }   else {
+            return redirect()->back()->with("message", "Error delete !");
+        }
     }
     // public function publish($id)
     // {

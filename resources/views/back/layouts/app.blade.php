@@ -13,7 +13,7 @@
     <div id="app">
 
         @include("back.partials.navbar")
-
+        
         <div id="main">
             <div class="page-heading mb-5">
             </div>

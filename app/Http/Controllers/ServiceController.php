@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ServiceController extends Controller
 {
@@ -14,12 +15,15 @@ class ServiceController extends Controller
     }
     public function create()
     {
+        if(! Gate::allows('create-service')){
+            abort(403, 'Sorry, not allowed');
+        }
         $services = Service::all();
         return view("/back/services/create",compact("services"));
     }
     public function store(Request $request)
     {
-        // $this->authorize('create', Service::class);
+        $this->authorize('create', Service::class);
         
         $service = new Service;
         $request->validate([
@@ -42,6 +46,9 @@ class ServiceController extends Controller
     }
     public function edit($id)
     {
+        if(! Gate::allows('edit-service')){
+            abort(403, 'Sorry, not allowed');
+        }
         $services = Service::all();
         $service = Service::find($id);
         return view("/back/services/edit",compact("service", "services"));
@@ -50,7 +57,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
 
-        // $this->authorize('update', $service);
+        $this->authorize('update', $service);
 
         $request->validate([
             'icone'=> 'required',
@@ -66,13 +73,18 @@ class ServiceController extends Controller
         $service->save(); // update_anchor
         return redirect()->route("service.index")->with("message", "Successful update !");
     }
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        $service = Service::find($id);
+        if(decrypt($request->id) == $id){
 
-        // $this->authorize('delete', $service);
-
-        $service->delete();
-        return redirect()->back()->with("message", "Successful delete !");
+            $service = Service::find($id);
+            $this->authorize('delete', $service);
+            $service->delete();
+            return redirect()->back()->with("message", "Successful delete !");
+        }
+        else{
+            return redirect()->back()->with("message", "Error delete !");
+        }
+        
     }
 }
